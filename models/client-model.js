@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const ClientModel = new mongoose.Schema({
+    client_number: { type: Number },
     client_name: { type: String, required: true },
     client_tel_number: { type: String },
 
@@ -9,7 +10,7 @@ const ClientModel = new mongoose.Schema({
     client_device_manufacturer: { type: String },
     client_device_model: { type: String },
 
-    client_approximate_cost_service: { type: Number, default: 0 },
+    client_approximate_cost_service: { type: Number },
     client_approximate_return_date: { type: String },
 
     client_prepayment_amount: { type: Number },

@@ -5,6 +5,7 @@ class ClientController {
         try {
             console.log( req.body );
             const {
+                client_number,
                 client_name,
                 client_tel_number,
                 client_reason,
@@ -22,6 +23,7 @@ class ClientController {
             console.log( client_tel_number )
 
             const newClient = await ClientModel.create({
+                client_number,
                 client_name,
                 client_tel_number,
                 client_reason,
@@ -36,7 +38,6 @@ class ClientController {
                 client_comment
             });
             
-            console.log( newClient );
             res.json( newClient )
         } catch (e) {
             console.log( 'broke' );
@@ -46,7 +47,7 @@ class ClientController {
 
     async getAllClients(req, res) {
         try {
-            const client = await ClientModel.find();
+            const client = await ClientModel.find({}, ' -_id -__v') ;
             return res.json(client);
         } catch (e) {
             res.status(500).json(e);
@@ -57,6 +58,7 @@ class ClientController {
         try {
             const {id: _id} = req.params
             const {
+                client_number,
                 client_name,
                 client_tel_number,
                 client_reason,
@@ -71,6 +73,7 @@ class ClientController {
                 client_comment 
             } = req.body
             const newClient = {
+                client_number,
                 client_name,
                 client_tel_number,
                 client_reason,
@@ -97,6 +100,7 @@ class ClientController {
                     })
                   } else {
                     res.json({newClient, success: true, 
+                        client_number,
                         client_name,
                         client_tel_number,
                         client_reason,

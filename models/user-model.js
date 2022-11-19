@@ -13,9 +13,7 @@ const UserSchema = new Schema({
         user_country: '',
         user_city: '',
         user_tel_number: '',
-        user_contact_email: '',
-
-        user_clients_orders_data: []
+        user_contact_email: ''
     }}
 })
 
